@@ -220,4 +220,24 @@
             text-align: center;
          }
     }
+
+    &__skills {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        &__text {
+            text-align: center;
+        }
+        
+        &__body {
+            width: 80%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 32px;
+            gap: 16px;
+         }
+    }
 }
