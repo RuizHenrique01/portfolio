@@ -49,6 +49,10 @@
     &__shape {
         width: 90%;
         max-width: 1530px;
+
+        @media (max-width: $mid) {
+            width: 99%;
+        }
     }
     
     &__home {
@@ -57,21 +61,43 @@
         box-sizing: border-box;
         display: flex;
 
+        @media (max-width: $mid) {
+            flex-direction: column-reverse;
+            gap: 32px;
+        }
+
         &__description {
             width: 50%;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            justify-content: center;
             align-items: flex-end;
+
+            @media (max-width: $mid) {
+                width: 100%;
+                align-self: center;
+                justify-content: flex-start;
+                align-items: center;
+            }
+
+            @media (max-width: $small) {
+                flex: 1;
+            }
 
             &__box {
                 width: 400px;
+                @media (max-width: $small) {
+                    width: 350px;
+                }
             }
 
             &__text {
                 width: fit-content;
                 position: relative;
+
+                @media (max-width: $small) {
+                    font-size: 3.2rem !important;
+                }
 
                 &:before{
                     content: "";
@@ -115,6 +141,10 @@
                 width: fit-content;
                 position: relative;
                 font-size: 1.5rem;
+
+                @media (max-width: $small) {
+                    font-size: 1.4rem !important;
+                }
 
                 &:before{
                     content: "";
@@ -190,6 +220,17 @@
             justify-content: center;
             align-items: center;
             z-index: 5;
+
+            @media (max-width: $mid) {
+                width: 100%;
+                align-self: center;
+                flex: 0;
+            }
+            @media (max-width: $small) {
+                flex: 1;
+                align-items: flex-end;
+            }
+
             &__img {
                 width: 350px;
                 height: 350px;
@@ -199,6 +240,11 @@
                 background-position: center;
                 background-size: cover;
                 display: block;
+
+                @media (max-width: $small) {
+                    width: 250px;
+                    height: 250px;
+                }
             }
         }
     }
@@ -238,6 +284,13 @@
             justify-content: center;
             margin: 32px;
             gap: 16px;
+         }
+
+         &__card {
+            transition: all .4s ease !important;
+            &:hover {
+                transform: translateY(-35px) scale(1.1) !important;
+            }
          }
     }
 }

@@ -3,8 +3,9 @@ import styles from './Main.module.scss';
 import stylesTheme from '../../styles/Theme.module.scss';
 import Header from '../../components/Header';
 import { Button, Card, CardContent, IconButton, Tooltip, Typography } from '@mui/material';
-import { Facebook, GitHub, Instagram, LinkedIn } from '@mui/icons-material';
+import { GitHub, Instagram, LinkedIn } from '@mui/icons-material';
 import { useEffect, useState } from 'react';
+import skills from '../../mocks/skills';
 
 const Main = () => {
 
@@ -25,162 +26,23 @@ const Main = () => {
             icon: <GitHub sx={{
                 fontSize: '32px'
             }} />,
-            link: ''
+            link: 'https://github.com/RuizHenrique01'
         },
         {
             name: 'LinkedIn',
             icon: <LinkedIn sx={{
                 fontSize: '32px'
             }} />,
-            link: ''
+            link: 'https://www.linkedin.com/in/affonsoruiz/'
         },
         {
             name: 'Instagram',
             icon: <Instagram sx={{
                 fontSize: '32px'
             }} />,
-            link: ''
-        },
-        {
-            name: 'Facebook',
-            icon: <Facebook sx={{
-                fontSize: '32px'
-            }} />,
-            link: ''
-        }
-    ];
-
-    const skills = [
-        {
-            name: 'JavaScript',
-            img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg'
-        },
-        {
-            name: 'TypeScript',
-            img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg'
-        },
-        {
-            name: 'NodeJS',
-            img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg'
-        },
-        {
-            name: 'NPM',
-            img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/npm/npm-original-wordmark.svg'
-        },
-        {
-            name: 'Yarn',
-            img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/yarn/yarn-original.svg'
-        },
-        {
-            name: 'HTML',
-            img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg'
-        },
-        {
-            name: 'CSS',
-            img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg'
-        },
-        {
-            name: 'React',
-            img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg'
-        },
-        {
-            name: 'Express.js',
-            img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg'
-        },
-        {
-            name: 'NestJS',
-            img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nestjs/nestjs-plain.svg'
-        },
-        {
-            name: 'MongoDB',
-            img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original-wordmark.svg'
-        },
-        {
-            name: 'PostgreSQL',
-            img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg'
-        },
-        {
-            name: 'MySQL',
-            img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg'
-        },
-        {
-            name: 'Firebase',
-            img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg'
-        },
-        {
-            name: 'Android',
-            img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/androidstudio/androidstudio-original.svg'
-        },
-        {
-            name: 'Kotlin',
-            img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg'
-        },
-        {
-            name: 'Java',
-            img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg'
-        },
-        {
-            name: 'Spring',
-            img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg'
-        },
-        {
-            name: 'Python',
-            img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg'
-        },
-        {
-            name: 'Flask',
-            img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg'
-        },
-        {
-            name: 'FastAPI',
-            img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg'
-        },
-        {
-            name: 'C',
-            img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg'
-        },
-        {
-            name: 'C++',
-            img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg'
-        },
-        {
-            name: 'C#',
-            img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg'
-        },
-        {
-            name: '.Net',
-            img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dotnetcore/dotnetcore-original.svg'
-        },
-        {
-            name: 'Golang',
-            img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original-wordmark.svg'
-        },
-        {
-            name: 'Docker',
-            img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg'
-        },
-        {
-            name: 'VS Code',
-            img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg'
-        },
-        {
-            name: 'Git',
-            img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg'
-        },
-        {
-            name: 'GitHub',
-            img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg'
-        },
-        {
-            name: 'AWS',
-            img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg'
-        },
-        {
-            name: 'PuTTY',
-            img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/putty/putty-original.svg'
+            link: 'https://www.instagram.com/ruiz_affonso?igsh=YTM5cnVrdHlyMGtv'
         },
     ];
-
 
     useEffect(() => {
         const timeoutId = setInterval(() => {
@@ -198,7 +60,7 @@ const Main = () => {
         <Header />
         <div className={classNames(stylesTheme.background, styles.main__body)}>
             <div className={styles.main__shape}>
-                <section className={styles.main__home}>
+                <section className={styles.main__home} id="home">
                     <div className={styles.main__home__description}>
                         <div className={styles.main__home__description__box}>
                             <Typography variant='h2' className={styles.main__home__description__text}>{"Hello World!🌎"}</Typography>
@@ -207,7 +69,9 @@ const Main = () => {
                             <div className={styles.main__home__description__icons}>
                                 {contacts.map(c => (
                                     <Tooltip title={c.name} key={c.name}>
-                                        <IconButton aria-label="delete" className={styles.main__home__description__icons__buttons}>
+                                        <IconButton aria-label="delete" className={styles.main__home__description__icons__buttons} onClick={() => {
+                                            window.open(c.link)
+                                        }}>
                                             {c.icon}
                                         </IconButton>
                                     </Tooltip>
@@ -227,7 +91,7 @@ const Main = () => {
 
                 <hr className={styles.main__division}></hr>
 
-                <section className={styles.main__about}>
+                <section className={styles.main__about} id="about">
                     <article>
                         <Typography variant='h4' className={styles.main__about__title}>Sobre</Typography>
                         <p>Sou um desenvolvedor Full Stack Júnior e técnico de informática formado pelo <b>Instituto Federal de Educação, Ciência e Tecnologia do Amazonas (IFAM)</b>. Atualmente estou cursando Análise e Desenvolvimento de Sistemas na Fametro.</p>
@@ -239,12 +103,19 @@ const Main = () => {
 
                 <hr className={styles.main__division}></hr>
 
-                <section className={styles.main__skills}>
+                <section className={styles.main__skills} id="skills">
                     <Typography variant='h4' className={styles.main__skills__text}>Skills</Typography>
                     <div className={styles.main__skills__body}>
                         {
                             skills.map(s => (
-                                <Card sx={{ width: 130, height: 170, pt: '16px', pb: '16px', pl: '8px', pr: '8px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                                <Card 
+                                className={styles.main__skills__card}
+                                key={s.name}
+                                // onClick={() => 
+                                //     {
+                                //         window.open('https://stackoverflow.com/questions/6983026/javascript-assign-array-values-to-multiple-variables')
+                                // }}
+                                sx={{ width: 130, height: 170, pt: '16px', pb: '16px', pl: '8px', pr: '8px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                                     <img
                                         width="90px"
                                         height="90px"

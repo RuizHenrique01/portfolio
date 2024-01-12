@@ -1,21 +1,42 @@
 import classNames from 'classnames';
 import style from './Header.module.scss';
 import styleTheme from '../../styles/Theme.module.scss';
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Drawer, IconButton } from '@mui/material';
+import { Menu } from '@mui/icons-material';
 
 const Header = () => {
 
+    const [windowSize, setWindowSize] = useState([
+        window.innerWidth,
+        window.innerHeight,
+    ]);
+
+    const [open, setOpen] = useState<boolean>(false);
+
+    useEffect(() => {
+        const handleWindowResize = () => {
+            setWindowSize([window.innerWidth, window.innerHeight]);
+        };
+
+        window.addEventListener('resize', handleWindowResize);
+
+        return () => {
+            window.removeEventListener('resize', handleWindowResize);
+        };
+    }, []);
+
     const menuItems = [{
         name: 'Home',
-        link: ''
+        link: '#home'
     },
     {
         name: 'Sobre',
-        link: ''
+        link: '#about'
     },
     {
         name: 'Skills',
-        link: ''
+        link: '#skills'
     },
     {
         name: 'Projetos',
@@ -32,15 +53,63 @@ const Header = () => {
     ]
 
     return <header className={classNames(styleTheme.background, style.header)}>
-        <ul className={style.header__menu}>
-            {
-                menuItems.map(m => (
-                    <li key={m.name} >
-                        <Link to={m.link}>{m.name}</Link>
-                    </li>
-                ))
-            }
-        </ul>
+        {
+            windowSize[0] < 600 ?
+                <IconButton aria-label="menu" size="large" onClick={() => setOpen(true)} >
+                    <Menu fontSize="inherit" className={styleTheme.text_secondary} />
+                </IconButton> :
+                <ul className={style.header__menu}>
+                    {
+                        menuItems.map(m => (
+                            <li key={m.name} >
+                                <a href={m.link}>{m.name}</a>
+                            </li>
+                        ))
+                    }
+                </ul>
+        }
+        <Drawer
+            anchor='left'
+            open={open}
+            variant="temporary"
+            onClose={() => setOpen(false)}
+            sx={{
+                width: "170px",
+                flexShrink: 0,
+                '& .MuiDrawer-paper': {
+                  width: "170px",
+                  boxSizing: 'border-box',
+                },
+              }}
+        >
+            <ul className={style.header__menu} style={{
+                width: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                margin: "16px 0",
+                padding: 0,
+                height: 'auto',
+                gap: 0,
+            }}>
+                {
+                    menuItems.map(m => (
+                        <li key={m.name} style={{
+                            width: '100%',
+                            justifySelf: 'flex-start',
+                            alignSelf: 'flex-end',
+                            textAlign: 'center',
+                        }}
+                        onClick={() => setOpen(false)}
+                        >
+                            <a href={m.link} style={{
+                                width: '100%',
+                                textAlign: 'center',
+                            }}>{m.name}</a>
+                        </li>
+                    ))
+                }
+            </ul>
+        </Drawer>
     </header>
 }
 
