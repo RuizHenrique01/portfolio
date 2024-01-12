@@ -5,6 +5,7 @@ import Header from '../../components/Header';
 import { Button, Card, CardContent, IconButton, Tooltip, Typography } from '@mui/material';
 import { GitHub, Instagram, LinkedIn } from '@mui/icons-material';
 import { useEffect, useState } from 'react';
+import curriculoPDF from '../../assets/Curriculo - Affonso Ruiz 2024.pdf'
 import skills from '../../mocks/skills';
 
 const Main = () => {
@@ -56,6 +57,26 @@ const Main = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
+    const handleDownloadPDF = () => {
+        // URL do PDF existente
+        const pdfUrl = curriculoPDF;
+    
+        // Gerar um nome de arquivo para o PDF (opcional)
+        const fileName = `Curriculo - Affonso Ruiz - ${new Date().toISOString()}.pdf`;
+    
+        // Criar um link temporário
+        const link = document.createElement('a');
+        link.href = pdfUrl;
+        link.download = fileName;
+    
+        // Adicionar o link ao DOM e clicar nele para iniciar o download
+        document.body.appendChild(link);
+        link.click();
+    
+        // Remover o link do DOM após o download
+        document.body.removeChild(link);
+      };
+
     return (<div className={classNames(stylesTheme.light, styles.main)}>
         <Header />
         <div className={classNames(stylesTheme.background, styles.main__body)}>
@@ -77,7 +98,7 @@ const Main = () => {
                                     </Tooltip>
                                 ))}
                             </div>
-                            <Button variant='outlined' className={styles.main__home__description__curriculo}>
+                            <Button variant='outlined' onClick={() => handleDownloadPDF()} className={styles.main__home__description__curriculo}>
                                 Download CV
                             </Button>
                         </div>
