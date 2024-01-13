@@ -29,8 +29,12 @@
     }
 
     &__division {
-        width: 85%;
-        border-color: $primary-color;
+        display: block;
+        height: 1px;
+        border: 0;
+        border-top: 1px solid $primary-color;
+        margin: 1em 0;
+        padding: 0;
         margin-bottom: 24px;
 
         &:nth-child(n){
@@ -93,6 +97,8 @@
 
             &__text {
                 width: fit-content;
+                display: flex;
+                align-items: center;
                 position: relative;
 
                 @media (max-width: $small) {

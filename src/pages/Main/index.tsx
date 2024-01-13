@@ -3,7 +3,7 @@ import styles from './Main.module.scss';
 import stylesTheme from '../../styles/Theme.module.scss';
 import Header from '../../components/Header';
 import { Button, Card, CardContent, IconButton, Tooltip, Typography } from '@mui/material';
-import { GitHub, Instagram, LinkedIn } from '@mui/icons-material';
+import { GitHub, Instagram, LinkedIn, Terminal } from '@mui/icons-material';
 import { useEffect, useState } from 'react';
 import curriculoPDF from '../../assets/Curriculo - Affonso Ruiz 2024.pdf'
 import skills from '../../mocks/skills';
@@ -60,22 +60,22 @@ const Main = () => {
     const handleDownloadPDF = () => {
         // URL do PDF existente
         const pdfUrl = curriculoPDF;
-    
+
         // Gerar um nome de arquivo para o PDF (opcional)
         const fileName = `Curriculo - Affonso Ruiz - ${new Date().toISOString()}.pdf`;
-    
+
         // Criar um link temporário
         const link = document.createElement('a');
         link.href = pdfUrl;
         link.download = fileName;
-    
+
         // Adicionar o link ao DOM e clicar nele para iniciar o download
         document.body.appendChild(link);
         link.click();
-    
+
         // Remover o link do DOM após o download
         document.body.removeChild(link);
-      };
+    };
 
     return (<div className={classNames(stylesTheme.light, styles.main)}>
         <Header />
@@ -84,9 +84,14 @@ const Main = () => {
                 <section className={styles.main__home} id="home">
                     <div className={styles.main__home__description}>
                         <div className={styles.main__home__description__box}>
-                            <Typography variant='h2' className={styles.main__home__description__text}>Hello World!&#127758;</Typography>
+                            <Typography variant='h2' className={styles.main__home__description__text}>Hello World! <Terminal 
+                            className={stylesTheme.text_secondary}
+                            sx={{
+                                fontSize: '60px',
+                                marginLeft: '8px'
+                            }} /></Typography>
                             <Typography variant='h4'>Eu sou <span className={stylesTheme.text_primary}>Affonso Ruiz</span></Typography>
-                            <p className={styles.main__home__description__code}>{messages[count]}</p>
+                            <div className={styles.main__home__description__code}>{messages[count]}</div>
                             <div className={styles.main__home__description__icons}>
                                 {contacts.map(c => (
                                     <Tooltip title={c.name} key={c.name}>
@@ -129,14 +134,14 @@ const Main = () => {
                     <div className={styles.main__skills__body}>
                         {
                             skills.map(s => (
-                                <Card 
-                                className={styles.main__skills__card}
-                                key={s.name}
-                                // onClick={() => 
-                                //     {
-                                //         window.open('https://stackoverflow.com/questions/6983026/javascript-assign-array-values-to-multiple-variables')
-                                // }}
-                                sx={{ width: 130, height: 170, pt: '16px', pb: '16px', pl: '8px', pr: '8px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                                <Card
+                                    className={styles.main__skills__card}
+                                    key={s.name}
+                                    // onClick={() => 
+                                    //     {
+                                    //         window.open('https://stackoverflow.com/questions/6983026/javascript-assign-array-values-to-multiple-variables')
+                                    // }}
+                                    sx={{ width: 130, height: 170, pt: '16px', pb: '16px', pl: '8px', pr: '8px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                                     <img
                                         width="90px"
                                         height="90px"
