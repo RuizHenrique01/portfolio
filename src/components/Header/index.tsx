@@ -82,7 +82,7 @@ const Header = () => {
                 },
               }}
         >
-            <ul className={style.header__menu} style={{
+            <ul className={style.header__menu__side} style={{
                 width: '100%',
                 display: 'flex',
                 flexDirection: 'column',
@@ -95,14 +95,17 @@ const Header = () => {
                     menuItems.map(m => (
                         <li key={m.name} style={{
                             width: '100%',
+                            display: 'flex',
                             justifySelf: 'flex-start',
                             alignSelf: 'flex-end',
                             textAlign: 'center',
+                            justifyContent: 'center'
                         }}
                         onClick={() => setOpen(false)}
                         >
                             <a href={m.link} style={{
-                                width: '100%',
+                                width: '70%',
+                                padding: "8px 16px",
                                 textAlign: 'center',
                             }}>{m.name}</a>
                         </li>

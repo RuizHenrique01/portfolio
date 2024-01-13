@@ -25,21 +25,21 @@ const Main = () => {
         {
             name: 'GitHub',
             icon: <GitHub sx={{
-                fontSize: '32px'
+                fontSize: '40px'
             }} />,
             link: 'https://github.com/RuizHenrique01'
         },
         {
             name: 'LinkedIn',
             icon: <LinkedIn sx={{
-                fontSize: '32px'
+                fontSize: '40px'
             }} />,
             link: 'https://www.linkedin.com/in/affonsoruiz/'
         },
         {
             name: 'Instagram',
             icon: <Instagram sx={{
-                fontSize: '32px'
+                fontSize: '40px'
             }} />,
             link: 'https://www.instagram.com/ruiz_affonso?igsh=YTM5cnVrdHlyMGtv'
         },
@@ -84,7 +84,7 @@ const Main = () => {
                 <section className={styles.main__home} id="home">
                     <div className={styles.main__home__description}>
                         <div className={styles.main__home__description__box}>
-                            <Typography variant='h2' className={styles.main__home__description__text}>{"Hello World!🌎"}</Typography>
+                            <Typography variant='h2' className={styles.main__home__description__text}>Hello World!&#127758;</Typography>
                             <Typography variant='h4'>Eu sou <span className={stylesTheme.text_primary}>Affonso Ruiz</span></Typography>
                             <p className={styles.main__home__description__code}>{messages[count]}</p>
                             <div className={styles.main__home__description__icons}>
@@ -144,7 +144,9 @@ const Main = () => {
                                         alt={s.name}
                                     />
                                     <CardContent>
-                                        <Typography gutterBottom variant="h6" component="div">
+                                        <Typography gutterBottom variant="h6" component="div" sx={{
+                                            fontSize: '1.125rem'
+                                        }}>
                                             {s.name}
                                         </Typography>
                                     </CardContent>
