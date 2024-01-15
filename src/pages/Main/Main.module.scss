@@ -246,6 +246,7 @@
                 background-position: center;
                 background-size: cover;
                 display: block;
+                box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;
 
                 @media (max-width: $small) {
                     width: 250px;
@@ -294,7 +295,9 @@
 
          &__card {
             transition: all .4s ease !important;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px !important;
             &:hover {
+                box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px !important;
                 transform: translateY(-35px) scale(1.1) !important;
             }
          }
