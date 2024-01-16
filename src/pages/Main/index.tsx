@@ -8,6 +8,8 @@ import { useEffect, useState } from 'react';
 import curriculoPDF from '../../assets/Curriculo - Affonso Ruiz 2024.pdf'
 import skills from '../../mocks/skills';
 import projects from '../../mocks/projects';
+import { Timeline, TimelineConnector, TimelineContent, TimelineDot, TimelineItem, TimelineSeparator } from '@mui/lab';
+import experience from '../../mocks/experience';
 
 const Main = () => {
 
@@ -167,40 +169,93 @@ const Main = () => {
                     <Typography variant='h4' className={styles.main__projects__text}>Projetos</Typography>
                     <div className={styles.main__projects__body}>
                         {projects.map(p => (
-                            <Card sx={{
-                                width: '400px', 
-                                height: '450px', 
-                                m:0, alignItems: 'flex-start', 
-                                justifyContent: 'flex-start',
-                                boxShadow: 'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;'
+                            <Card
+                                key={p.title}
+                                className={styles.main__projects__card}
+                                sx={{
+                                    width: '400px',
+                                    height: '450px',
+                                    m: 0, alignItems: 'flex-start',
+                                    justifyContent: 'flex-start',
                                 }}>
-                              <div
-                                style={{
-                                  width: '100%',
-                                  height: '100%',
-                                  maxHeight: '250px',
-                                  overflow: 'hidden',
-                                  background: `url(${p.panelImg})`,
-                                  padding: 0,
-                                  backgroundRepeat: 'no-repeat',
-                                  backgroundSize: 'cover',
-                                  backgroundPosition: p.positionImg,
-                                  display: 'block'
-                                }}
-                              />
-                              <CardContent>
-                                <Typography gutterBottom variant="h5" component="div">
-                                  {p.title}
-                                </Typography>
-                                <Typography variant="body2" color="text.secondary" sx={{
-                                    textAlign: 'justify',
-                                    fontSize: '1rem'
-                                }}>
-                                  {p.description}
-                                </Typography>
-                              </CardContent>
-                          </Card>
+                                <div
+                                    style={{
+                                        width: '100%',
+                                        height: '100%',
+                                        maxHeight: '250px',
+                                        background: `url(${p.panelImg})`,
+                                        padding: 0,
+                                        backgroundRepeat: 'no-repeat',
+                                        backgroundSize: 'cover',
+                                        backgroundPosition: p.positionImg,
+                                        display: 'block'
+                                    }}
+                                />
+                                <CardContent>
+                                    <Typography gutterBottom variant="h5" component="div">
+                                        {p.title}
+                                    </Typography>
+                                    <Typography variant="body2" color="text.secondary" sx={{
+                                        textAlign: 'justify',
+                                        fontSize: '1rem'
+                                    }}>
+                                        {p.description}
+                                    </Typography>
+                                </CardContent>
+                            </Card>
                         ))}
+                    </div>
+                </section>
+
+                <hr className={styles.main__division}></hr>
+
+                <section className={styles.main__experience} id="experience">
+                    <Typography variant='h4' className={styles.main__experience__text}>Experiência Profissional</Typography>
+                    <div className={styles.main__experience__body}>
+                        <Timeline sx={{
+                            justifyContent: 'flex-start',
+                            alignItems: 'flex-start'
+                        }}>
+                            {
+                                experience.map(e => (
+                                    <TimelineItem key={e.company}>
+                                        <TimelineSeparator>
+                                            <TimelineDot sx={{
+                                                width: '18px',
+                                                height: '18px'
+                                            }} />
+                                            <TimelineConnector sx={{
+                                                height: '32px'
+                                            }} />
+                                        </TimelineSeparator>
+                                        <TimelineContent>
+                                            <Card
+                                                className={styles.main__experience__card}
+                                                sx={{
+                                                    width: '800px',
+                                                }}>
+                                            <img
+                                            src={e.logo}
+                                            alt={e.company + " logo"}
+                                            />
+                                            <div>
+                                                <Typography variant='h4'>{e.company + " - " + e.time}</Typography>
+                                                <Typography variant='h6'>{e.role}</Typography>
+                                                <p>Atividades:</p>
+                                                <ul>
+                                                    {
+                                                        e.activities.map((a,i) => (
+                                                            <li key={i}>{a}</li>
+                                                        ))
+                                                    }
+                                                </ul>
+                                            </div>
+                                            </Card>
+                                        </TimelineContent>
+                                    </TimelineItem>
+                                ))
+                            }
+                        </Timeline>
                     </div>
                 </section>
 

@@ -274,6 +274,7 @@
 
          &__title {
             text-align: center;
+            margin-bottom: 16px !important;
          }
     }
 
@@ -285,6 +286,7 @@
         flex-direction: column;
         &__text {
             text-align: center;
+            margin-bottom: 16px !important;
         }
         
         &__body {
@@ -314,6 +316,7 @@
         flex-direction: column;
         &__text {
             text-align: center;
+            margin-bottom: 16px !important;
         }
         &__body {
             width: 81%;
@@ -325,5 +328,47 @@
             justify-content: center;
             padding: 0;
          }
+
+         &__card {
+            transition: all .4s ease !important;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px !important;
+            &:hover {
+                box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px !important;
+                transform: translateY(-35px) scale(1.1) !important;
+            }
+         }
+    }
+
+    &__experience {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        &__body {
+            width: 81%;
+            display: flex;
+            margin: 32px;
+            gap: 16px;
+            justify-content: flex-start !important;
+            padding: 0;
+         }
+
+        &__text {
+            text-align: center;
+            margin-bottom: 16px !important;
+        }
+
+        &__card {
+            display: flex;
+            padding: 16px 8px;
+            gap: 16px;
+
+            & img {
+                width: 48px;
+                height: 48px;
+            }
+        }
     }
 }
