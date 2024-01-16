@@ -40,7 +40,7 @@ const Header = () => {
     },
     {
         name: 'Projetos',
-        link: ''
+        link: '#projects'
     },
     {
         name: 'Experiência',

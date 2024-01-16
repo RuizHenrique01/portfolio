@@ -7,6 +7,7 @@ import { GitHub, Instagram, LinkedIn, Terminal } from '@mui/icons-material';
 import { useEffect, useState } from 'react';
 import curriculoPDF from '../../assets/Curriculo - Affonso Ruiz 2024.pdf'
 import skills from '../../mocks/skills';
+import projects from '../../mocks/projects';
 
 const Main = () => {
 
@@ -84,12 +85,12 @@ const Main = () => {
                 <section className={styles.main__home} id="home">
                     <div className={styles.main__home__description}>
                         <div className={styles.main__home__description__box}>
-                            <Typography variant='h2' className={styles.main__home__description__text}>Hello World! <Terminal 
-                            className={stylesTheme.text_secondary}
-                            sx={{
-                                fontSize: '60px',
-                                marginLeft: '8px'
-                            }} /></Typography>
+                            <Typography variant='h2' className={styles.main__home__description__text}>Hello World! <Terminal
+                                className={stylesTheme.text_secondary}
+                                sx={{
+                                    fontSize: '60px',
+                                    marginLeft: '8px'
+                                }} /></Typography>
                             <Typography variant='h4'>Eu sou <span className={stylesTheme.text_primary}>Affonso Ruiz</span></Typography>
                             <div className={styles.main__home__description__code}>{messages[count]}</div>
                             <div className={styles.main__home__description__icons}>
@@ -160,7 +161,48 @@ const Main = () => {
                         }
                     </div>
                 </section>
+                <hr className={styles.main__division}></hr>
 
+                <section className={styles.main__projects} id="projects">
+                    <Typography variant='h4' className={styles.main__projects__text}>Projetos</Typography>
+                    <div className={styles.main__projects__body}>
+                        {projects.map(p => (
+                            <Card sx={{
+                                width: '400px', 
+                                height: '450px', 
+                                m:0, alignItems: 'flex-start', 
+                                justifyContent: 'flex-start',
+                                boxShadow: 'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;'
+                                }}>
+                              <div
+                                style={{
+                                  width: '100%',
+                                  height: '100%',
+                                  maxHeight: '250px',
+                                  overflow: 'hidden',
+                                  background: `url(${p.panelImg})`,
+                                  padding: 0,
+                                  backgroundRepeat: 'no-repeat',
+                                  backgroundSize: 'cover',
+                                  backgroundPosition: p.positionImg,
+                                  display: 'block'
+                                }}
+                              />
+                              <CardContent>
+                                <Typography gutterBottom variant="h5" component="div">
+                                  {p.title}
+                                </Typography>
+                                <Typography variant="body2" color="text.secondary" sx={{
+                                    textAlign: 'justify',
+                                    fontSize: '1rem'
+                                }}>
+                                  {p.description}
+                                </Typography>
+                              </CardContent>
+                          </Card>
+                        ))}
+                    </div>
+                </section>
 
                 <hr className={styles.main__division}></hr>
             </div>
