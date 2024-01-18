@@ -3,13 +3,14 @@ import styles from './Main.module.scss';
 import stylesTheme from '../../styles/Theme.module.scss';
 import Header from '../../components/Header';
 import { Button, Card, CardContent, IconButton, Tooltip, Typography } from '@mui/material';
-import { GitHub, Instagram, LinkedIn, Terminal } from '@mui/icons-material';
+import { Call, GitHub, Instagram, LinkedIn, Mail, Terminal } from '@mui/icons-material';
 import { useEffect, useState } from 'react';
 import curriculoPDF from '../../assets/Curriculo - Affonso Ruiz 2024.pdf'
 import skills from '../../mocks/skills';
 import projects from '../../mocks/projects';
 import { Timeline, TimelineConnector, TimelineContent, TimelineDot, TimelineItem, TimelineSeparator } from '@mui/lab';
 import experience from '../../mocks/experience';
+import { enqueueSnackbar } from 'notistack';
 
 const Main = () => {
 
@@ -46,6 +47,33 @@ const Main = () => {
             }} />,
             link: 'https://www.instagram.com/ruiz_affonso?igsh=YTM5cnVrdHlyMGtv'
         },
+    ];
+
+    const endContacts = [{
+        icon: <Call />,
+        contact: '(92)99249-7674',
+        label: '(92)99249-7674'
+    },
+    {
+        icon: <Mail />,
+        contact: 'affonsohenriqueruiz@gmail.com',
+        label: 'affonsohenriqueruiz@gmail.com'
+    },
+    {
+        icon: <LinkedIn />,
+        contact: 'https://www.linkedin.com/in/affonsoruiz/',
+        label: 'Affonso Henrique Ruiz Jurema'
+    },
+    {
+        icon: <GitHub />,
+        contact: 'https://github.com/RuizHenrique01',
+        label: 'RuizHenrique01'
+    },
+    {
+        icon: <Instagram />,
+        contact: 'https://www.instagram.com/ruiz_affonso?igsh=YTM5cnVrdHlyMGtv',
+        label: 'ruiz_affonso'
+    },
     ];
 
     useEffect(() => {
@@ -234,22 +262,22 @@ const Main = () => {
                                                 sx={{
                                                     width: '800px',
                                                 }}>
-                                            <img
-                                            src={e.logo}
-                                            alt={e.company + " logo"}
-                                            />
-                                            <div>
-                                                <Typography variant='h4'>{e.company + " - " + e.time}</Typography>
-                                                <Typography variant='h6'>{e.role}</Typography>
-                                                <p>Atividades:</p>
-                                                <ul>
-                                                    {
-                                                        e.activities.map((a,i) => (
-                                                            <li key={i}>{a}</li>
-                                                        ))
-                                                    }
-                                                </ul>
-                                            </div>
+                                                <img
+                                                    src={e.logo}
+                                                    alt={e.company + " logo"}
+                                                />
+                                                <div>
+                                                    <Typography variant='h4'>{e.company + " - " + e.time}</Typography>
+                                                    <Typography variant='h6'>{e.role}</Typography>
+                                                    <p>Atividades:</p>
+                                                    <ul>
+                                                        {
+                                                            e.activities.map((a, i) => (
+                                                                <li key={i}>{a}</li>
+                                                            ))
+                                                        }
+                                                    </ul>
+                                                </div>
                                             </Card>
                                         </TimelineContent>
                                     </TimelineItem>
@@ -260,6 +288,26 @@ const Main = () => {
                 </section>
 
                 <hr className={styles.main__division}></hr>
+
+                <section className={styles.main__contact} id="contacts">
+                    <Typography variant='h4' className={styles.main__contact__text}>Contatos</Typography>
+                    <div className={styles.main__contact__body}>
+                        {
+                            endContacts.map((e, i) => (
+                                <p key={i} className={styles.main__contact__paragraph} onClick={() => {
+                                    navigator.clipboard.writeText(e.contact);
+                                    enqueueSnackbar('Contato copiado!', {
+                                        autoHideDuration: 3000,
+                                        anchorOrigin: {
+                                            vertical: 'bottom',
+                                            horizontal: 'center'
+                                        }
+                                    })
+                                }}>{e.icon} {e.label}</p>
+                            ))
+                        }
+                    </div>
+                </section>
             </div>
         </div>
     </div >)

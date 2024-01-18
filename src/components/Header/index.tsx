@@ -48,7 +48,7 @@ const Header = () => {
     },
     {
         name: 'Contatos',
-        link: ''
+        link: '#contacts'
     },
     ]
 
