@@ -79,6 +79,9 @@
             justify-content: center;
             align-items: flex-end;
 
+            animation: showPhoto;
+            animation-duration: 1.5s;
+
             @media (max-width: $mid) {
                 width: 100%;
                 align-self: center;
@@ -118,7 +121,7 @@
                     border-left: 2px solid $primary-color;
                     animation: animate 10s steps(12) forwards;
                     transition: all .1;
-                    animation-delay: 1s;
+                    animation-delay: 2s;
                 }
 
                 @keyframes animate {
@@ -165,7 +168,7 @@
                     border-left: 2px solid $primary-color;
                     animation: animateCode 10s steps(12) infinite;
                     transition: all .1;
-                    animation-delay: 1s;
+                    animation-delay: 2s;
                 }
 
                 @keyframes animateCode {
@@ -228,6 +231,21 @@
             justify-content: center;
             align-items: center;
             z-index: 5;
+            animation: showPhoto;
+            animation-duration: 1.5s;
+
+            @keyframes showPhoto {
+                from {
+                    opacity: 0;
+                    filter: blur(15px);
+                    transform: translateY(+100%);
+                }
+                to {
+                    opacity: 1;
+                    filter: blur(0);
+                    transform: translateY(0);
+                }
+            }
 
             @media (max-width: $mid) {
                 width: 100%;
