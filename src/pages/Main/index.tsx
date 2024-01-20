@@ -238,7 +238,7 @@ const Main = () => {
                 <hr className={styles.main__division}></hr>
 
                 <section className={styles.main__experience} id="experience">
-                    <Typography variant='h4' className={styles.main__experience__text}>Experiência Profissional</Typography>
+                    <Typography variant='h4' className={styles.main__experience__text}>Experiência</Typography>
                     <div className={styles.main__experience__body}>
                         <Timeline sx={{
                             justifyContent: 'flex-start',
