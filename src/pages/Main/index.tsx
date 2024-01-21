@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react';
 import curriculoPDF from '../../assets/Curriculo - Affonso Ruiz 2024.pdf'
 import skills from '../../mocks/skills';
 import projects from '../../mocks/projects';
-import { Timeline, TimelineConnector, TimelineContent, TimelineDot, TimelineItem, TimelineSeparator } from '@mui/lab';
+import { Timeline, TimelineConnector, TimelineContent, TimelineDot, TimelineItem, TimelineSeparator, timelineItemClasses } from '@mui/lab';
 import experience from '../../mocks/experience';
 import { enqueueSnackbar } from 'notistack';
 
@@ -151,7 +151,7 @@ const Main = () => {
                 <section className={styles.main__about} id="about">
                     <article>
                         <Typography variant='h4' className={styles.main__about__title}>Sobre</Typography>
-                        <p>Sou um desenvolvedor Full Stack Júnior e técnico de informática formado pelo <b>Instituto Federal de Educação, Ciência e Tecnologia do Amazonas (IFAM)</b>. Atualmente estou cursando Análise e Desenvolvimento de Sistemas na Fametro.</p>
+                        <p>Olá, meu nome é Affonso Ruiz, tenho 20 anos e sou um Analista e Desenvolvedor de Sistemas graduado pela Faculdade Metropolitana de Manaus (Fametro) e Técnico em Informática formado pelo Instituto Federal de Educação, Ciência e Tecnologia do Amazonas (IFAM). Trabalho profissionalmente como Desenvolvedor FullStack Web há cerca de 2 anos, atuando na criação de API Rest, páginas web, integrações de processos de comunicações, entre outros.</p>
                         <p>Possuo experiência com o desenvolvimento de alguns projetos pessoais, como criação de APIs, que utilizam tecnologias como NodeJs, JavaScript, TypeScript, Express.js, MongoDB, JWT, TypeORM e entre outras tecnologias.</p>
                         <p>Também desenvolvi alguns outros projetos como aplicativos e web sites que utilizam tecnologias como Java, kotlin, HTML, CSS, SQL, Firebase e entre outros.</p>
                         <p>Sou alguém extremamente apaixonado por tecnologia e sempre que possível gosto de participar de eventos e workshops de programação. Espero sempre esta aprendendo e evoluindo na minha carreia como desenvolvedor.</p>
@@ -202,15 +202,16 @@ const Main = () => {
                                 className={styles.main__projects__card}
                                 sx={{
                                     width: '400px',
-                                    height: '450px',
-                                    m: 0, alignItems: 'flex-start',
+                                    minHeight: '450px',
+                                    m: 0,
+                                    alignItems: 'flex-start',
                                     justifyContent: 'flex-start',
                                 }}>
                                 <div
                                     style={{
                                         width: '100%',
-                                        height: '100%',
-                                        maxHeight: '250px',
+                                        height: '250px',
+                                        flex: 1,
                                         background: `url(${p.panelImg})`,
                                         padding: 0,
                                         backgroundRepeat: 'no-repeat',
@@ -219,7 +220,9 @@ const Main = () => {
                                         display: 'block'
                                     }}
                                 />
-                                <CardContent>
+                                <CardContent sx={{
+                                    justifySelf: 'flex-end',
+                                }}>
                                     <Typography gutterBottom variant="h5" component="div">
                                         {p.title}
                                     </Typography>
@@ -241,20 +244,34 @@ const Main = () => {
                     <Typography variant='h4' className={styles.main__experience__text}>Experiência</Typography>
                     <div className={styles.main__experience__body}>
                         <Timeline sx={{
-                            justifyContent: 'flex-start',
-                            alignItems: 'flex-start'
+                            width: '100%',
+                            margin: 0,
+                            padding: 0,
+                            [`& .${timelineItemClasses.root}:before`]: {
+                                flex: 0,
+                                padding: 0,
+                            },
                         }}>
                             {
                                 experience.map(e => (
-                                    <TimelineItem key={e.company}>
-                                        <TimelineSeparator>
+                                    <TimelineItem key={e.company}
+                                        sx={
+                                            {
+                                                width: '100%',
+                                                justifyContent: 'flex-start',
+                                                alignItems: 'flex-start',
+                                                m: 0,
+                                                p: 0
+                                            }
+                                        }>
+                                        <TimelineSeparator sx={{
+                                            height: '100%',
+                                        }}>
                                             <TimelineDot sx={{
                                                 width: '18px',
-                                                height: '18px'
+                                                height: '18px',
                                             }} />
-                                            <TimelineConnector sx={{
-                                                height: '32px'
-                                            }} />
+                                            <TimelineConnector />
                                         </TimelineSeparator>
                                         <TimelineContent>
                                             <Card

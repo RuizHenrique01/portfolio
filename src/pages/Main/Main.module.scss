@@ -371,6 +371,12 @@
             gap: 16px;
             justify-content: flex-start !important;
             padding: 0;
+            
+            @media (max-width: $large) {
+                width: 100%;
+                margin: 0px;
+                padding: 0px;
+            }
          }
 
         &__text {
@@ -381,8 +387,13 @@
         &__card {
             display: flex;
             padding: 16px 8px;
+            justify-content: flex-start;
             box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px !important;
             gap: 16px;
+
+            @media (max-width: $large) {
+                width: auto !important;
+            }
 
             & img {
                 width: 48px;
