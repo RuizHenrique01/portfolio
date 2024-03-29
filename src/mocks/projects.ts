@@ -1,4 +1,5 @@
 import Login from '../assets/Login.png';
+import Study from '../assets/study.jpg';
 
 const projects = [
     {
@@ -34,7 +35,7 @@ const projects = [
     {
         title: 'Study Manager',
         description: 'Aplicação Web de organização de projetos e estudos, onde o usuário pode criar projetos e dentro destes projetos o usuário pode organizar tarefas, adicionando nome, descrição e data de entrega.',
-        panelImg: 'https://media.licdn.com/dms/image/C4D22AQFtYz3Muw4VnA/feedshare-shrink_1280/0/1631796556685?e=1708560000&v=beta&t=sj6MspYHI03fIKyzaBU6A4sLgmvfzbpR-3OE3cpYl1w',
+        panelImg: Study,
         positionImg: 'center center'
     },
 ];

@@ -37,7 +37,7 @@ const skills = [
     },
     {
         name: 'NestJS',
-        img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nestjs/nestjs-plain.svg'
+        img: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nestjs/nestjs-original.svg'
     },
     {
         name: 'MongoDB',
@@ -121,7 +121,7 @@ const skills = [
     },
     {
         name: 'AWS',
-        img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg'
+        img: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg'
     },
     {
         name: 'PuTTY',

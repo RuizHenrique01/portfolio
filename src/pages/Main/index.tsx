@@ -11,6 +11,7 @@ import projects from '../../mocks/projects';
 import { Timeline, TimelineConnector, TimelineContent, TimelineDot, TimelineItem, TimelineSeparator, timelineItemClasses } from '@mui/lab';
 import experience from '../../mocks/experience';
 import { enqueueSnackbar } from 'notistack';
+import moment from 'moment';
 
 const Main = () => {
 
@@ -108,6 +109,18 @@ const Main = () => {
         document.body.removeChild(link);
     };
 
+    const getYearsOld = () => {
+        const today = moment();
+        const birthday = moment("2003-02-09");
+        return moment.duration(today.diff(birthday)).years();
+    }
+
+    const getDiferenceYears = (dateInit: string) => {
+        const today = moment();
+        const birthday = moment(dateInit);
+        return moment.duration(today.diff(birthday)).years();
+    }
+
     return (<div className={classNames(stylesTheme.light, styles.main)}>
         <Header />
         <div className={classNames(stylesTheme.background, styles.main__body)}>
@@ -151,10 +164,14 @@ const Main = () => {
                 <section className={styles.main__about} id="about">
                     <article>
                         <Typography variant='h4' className={styles.main__about__title}>Sobre</Typography>
-                        <p>Olá, meu nome é Affonso Ruiz, tenho 20 anos e sou um Analista e Desenvolvedor de Sistemas graduado pela Faculdade Metropolitana de Manaus (Fametro) e Técnico em Informática formado pelo Instituto Federal de Educação, Ciência e Tecnologia do Amazonas (IFAM). Trabalho profissionalmente como Desenvolvedor FullStack Web há cerca de 2 anos, atuando na criação de API Rest, páginas web, integrações de processos de comunicações, entre outros.</p>
-                        <p>Possuo experiência com o desenvolvimento de alguns projetos pessoais, como criação de APIs, que utilizam tecnologias como NodeJs, JavaScript, TypeScript, Express.js, MongoDB, JWT, TypeORM e entre outras tecnologias.</p>
-                        <p>Também desenvolvi alguns outros projetos como aplicativos e web sites que utilizam tecnologias como Java, kotlin, HTML, CSS, SQL, Firebase e entre outros.</p>
-                        <p>Sou alguém extremamente apaixonado por tecnologia e sempre que possível gosto de participar de eventos e workshops de programação. Espero sempre esta aprendendo e evoluindo na minha carreia como desenvolvedor.</p>
+                        <p>Olá! Sou Affonso Ruiz, tenho { getYearsOld() } anos de idade e sou um Analista e Desenvolvedor de Sistemas formado pela renomada Faculdade Metropolitana de Manaus (Fametro), com uma sólida formação técnica em Informática pelo Instituto Federal de Educação, Ciência e Tecnologia do Amazonas (IFAM).</p>
+
+                        <p>Com mais de { getDiferenceYears("2018-02-01") } anos dedicados ao estudo e prática da programação, possuo cerca de { getDiferenceYears("2021-12-13") } anos de experiência como Desenvolvedor FullStack Web, período em que concentrei meus esforços na criação de robustas API Rest, desenvolvimento de páginas web dinâmicas e integrações de processos de comunicação, contribuindo ativamente para projetos profissionais.</p>
+
+                        <p>Minha paixão pela tecnologia se reflete em meu trabalho diário e em meu incessante desejo de aprendizado. Busco constantemente participar de eventos e workshops de programação, mantendo-me atualizado com as últimas tendências do setor e aprimorando minhas habilidades técnicas.</p>
+
+                        <p>Estou totalmente comprometido em evoluir continuamente em minha carreira como desenvolvedor, sempre em busca de novos desafios e oportunidades para aplicar meu conhecimento e criatividade em projetos inovadores.</p>
+
                     </article>
                 </section>
 
