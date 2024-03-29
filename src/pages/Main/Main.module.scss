@@ -292,7 +292,6 @@
                 text-align: justify;
                 font-size: 1.5rem;
                 line-height: 1.5;
-                letter-spacing: 1;
             }
          }
 
@@ -351,6 +350,10 @@
             align-items: center;
             justify-content: center;
             padding: 0;
+
+            @media (max-width: $mx_large) {
+                width: 91%;
+            }
          }
 
          &__card {
@@ -437,6 +440,7 @@
             width: calc(50% - 16px);
             display: flex;
             align-items: center;
+            font-size: 1rem;
             gap: 16px;
             color: $secondary-color !important;
             cursor: pointer;

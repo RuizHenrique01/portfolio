@@ -168,6 +168,8 @@ const Main = () => {
 
                         <p>Com mais de { getDiferenceYears("2018-02-01") } anos dedicados ao estudo e prática da programação, possuo cerca de { getDiferenceYears("2021-12-13") } anos de experiência como Desenvolvedor FullStack Web, período em que concentrei meus esforços na criação de robustas API Rest, desenvolvimento de páginas web dinâmicas e integrações de processos de comunicação, contribuindo ativamente para projetos profissionais.</p>
 
+                        <p>Além disso, tive a oportunidade de participar do desenvolvimento de diversas aplicações, incluindo web (backend e frontend), mobile, jogos, desktop e automação industrial.</p>
+
                         <p>Minha paixão pela tecnologia se reflete em meu trabalho diário e em meu incessante desejo de aprendizado. Busco constantemente participar de eventos e workshops de programação, mantendo-me atualizado com as últimas tendências do setor e aprimorando minhas habilidades técnicas.</p>
 
                         <p>Estou totalmente comprometido em evoluir continuamente em minha carreira como desenvolvedor, sempre em busca de novos desafios e oportunidades para aplicar meu conhecimento e criatividade em projetos inovadores.</p>
