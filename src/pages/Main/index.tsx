@@ -12,6 +12,8 @@ import { Timeline, TimelineConnector, TimelineContent, TimelineDot, TimelineItem
 import experience from '../../mocks/experience';
 import { enqueueSnackbar } from 'notistack';
 import moment from 'moment';
+import profileGitHub from '../../assets/profile2.jpeg';
+import PieDonutChart from '../../components/PieDonutChart';
 
 const Main = () => {
 
@@ -25,6 +27,21 @@ const Main = () => {
         <p>Console.WriteLine(<span className={stylesTheme.text_secondary}>"Hello World!"</span>);</p>];
     const [messages] = useState(helloMessages);
     const [count, setCount] = useState<number>(0);
+
+    const [statistics,] = useState<Array<{ name: string, statistic: number }>>([
+        {
+            name: 'Total de Commits',
+            statistic: 567
+        },
+        {
+            name: 'Total de PRs',
+            statistic: 70
+        },
+        {
+            name: 'Total de Estrelas',
+            statistic: 3
+        },
+    ]);
 
     const contacts = [
         {
@@ -164,9 +181,9 @@ const Main = () => {
                 <section className={styles.main__about} id="about">
                     <article>
                         <Typography variant='h4' className={styles.main__about__title}>Sobre</Typography>
-                        <p>Olá! Sou Affonso Ruiz, tenho { getYearsOld() } anos de idade e sou um Analista e Desenvolvedor de Sistemas formado pela renomada Faculdade Metropolitana de Manaus (Fametro), com uma sólida formação técnica em Informática pelo Instituto Federal de Educação, Ciência e Tecnologia do Amazonas (IFAM).</p>
+                        <p>Olá! Sou Affonso Ruiz, tenho {getYearsOld()} anos de idade e sou um Analista e Desenvolvedor de Sistemas formado pela renomada Faculdade Metropolitana de Manaus (Fametro), com uma sólida formação técnica em Informática pelo Instituto Federal de Educação, Ciência e Tecnologia do Amazonas (IFAM).</p>
 
-                        <p>Com mais de { getDiferenceYears("2018-02-01") } anos dedicados ao estudo e prática da programação, possuo cerca de { getDiferenceYears("2021-12-13") } anos de experiência como Desenvolvedor FullStack Web, período em que concentrei meus esforços na criação de robustas API Rest, desenvolvimento de páginas web dinâmicas e integrações de processos de comunicação, contribuindo ativamente para projetos profissionais.</p>
+                        <p>Com mais de {getDiferenceYears("2018-02-01")} anos dedicados ao estudo e prática da programação, possuo cerca de {getDiferenceYears("2021-12-13")} anos de experiência como Desenvolvedor FullStack Web, período em que concentrei meus esforços na criação de robustas API Rest, desenvolvimento de páginas web dinâmicas e integrações de processos de comunicação, contribuindo ativamente para projetos profissionais.</p>
 
                         <p>Além disso, tive a oportunidade de participar do desenvolvimento de diversas aplicações, incluindo web (backend e frontend), mobile, jogos, desktop e automação industrial.</p>
 
@@ -254,6 +271,75 @@ const Main = () => {
                                 </CardContent>
                             </Card>
                         ))}
+                    </div>
+                </section>
+
+                <hr className={styles.main__division}></hr>
+
+                <section className={styles.main__statistics} id="statistics">
+                    <Typography variant='h4' className={styles.main__statistics__text}>Estatísticas do GitHub</Typography>
+                    <div className={styles.main__statistics__body}>
+                        {statistics.map(p => (
+                            <Card
+                                key={p.name}
+                                className={styles.main__statistics__card}
+                                sx={{
+                                    flex: 1,
+                                    minWidth: "230px",
+                                    minHeight: '120px',
+                                    m: 0,
+                                    p: "16px",
+                                    alignItems: 'flex-start',
+                                    justifyContent: 'flex-start',
+                                    display: "flex",
+                                    flexDirection: "column"
+                                }}>
+                                <Typography gutterBottom variant="h6" component="div" className={styles.main__statistics__card__title}>
+                                    {p.name}
+                                </Typography>
+                                <Typography gutterBottom variant="h4" component="div" className={styles.main__statistics__card__content}>
+                                    {p.statistic}
+                                </Typography>
+                            </Card>
+                        ))}
+                    </div>
+                    <div className={styles.main__statistics__body} style={{
+                        marginTop: 0
+                    }}>
+                        <Tooltip title={<h2>
+                            👨‍💻 Programando!
+                        </h2>} placement='right'>
+
+                            <Card
+                                className={classNames([styles.main__statistics__card, styles.main__statistics__card__profile])}>
+                                <div
+                                    style={{
+                                        width: '100%',
+                                        flex: 1,
+                                        background: `url(${profileGitHub})`,
+                                        padding: 0,
+                                        backgroundRepeat: 'no-repeat',
+                                        backgroundSize: 'cover',
+                                        backgroundPosition: 'center center',
+                                        objectFit: 'fill',
+                                        display: 'block'
+                                    }}
+                                />
+                                <Typography gutterBottom variant="h5" component="div" className={styles.main__statistics__card__title} style={{
+                                    alignSelf: 'center',
+                                    margin: '8px 0px 0px 0px'
+                                }}>
+                                    RuizHenrique01
+                                </Typography>
+                            </Card>
+                        </Tooltip>
+                        <Card
+                            className={classNames([styles.main__statistics__card, styles.main__statistics__card__graph])}>
+                            <Typography gutterBottom variant="h6" component="div" className={styles.main__statistics__card__title}>
+                                Linguagens Mais Usadas
+                            </Typography>
+                            <PieDonutChart />
+                        </Card>
                     </div>
                 </section>
 
