@@ -43,6 +43,10 @@ const Header = () => {
         link: '#projects'
     },
     {
+        name: 'Estatísticas',
+        link: '#statistics'
+    },
+    {
         name: 'Experiência',
         link: '#experience'
     },

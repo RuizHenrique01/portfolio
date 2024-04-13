@@ -12,8 +12,13 @@ import { Timeline, TimelineConnector, TimelineContent, TimelineDot, TimelineItem
 import experience from '../../mocks/experience';
 import { enqueueSnackbar } from 'notistack';
 import moment from 'moment';
+import profileGitHub from '../../assets/profile2.jpeg';
+import PieDonutChart from '../../components/PieDonutChart';
+import { GitHubService } from '../../services/GitHub.service';
 
 const Main = () => {
+
+    const gitHubService = new GitHubService();
 
     const helloMessages = [
         <p>printf(<span className={stylesTheme.text_secondary}>"Hello World!"</span>);</p>,
@@ -25,6 +30,32 @@ const Main = () => {
         <p>Console.WriteLine(<span className={stylesTheme.text_secondary}>"Hello World!"</span>);</p>];
     const [messages] = useState(helloMessages);
     const [count, setCount] = useState<number>(0);
+
+    const [statistics, setStatistics] = useState({
+        total_commits: 0,
+        total_prs: 0,
+        total_stars: 0
+    });
+
+    const [graphic, setGraphic] = useState({});
+
+    const statisticsNames: Array<{
+        name: string;
+        key: string;
+    }> = [
+            {
+                name: 'Total de Commits',
+                key: 'total_commits',
+            },
+            {
+                name: 'Total de PRs',
+                key: 'total_prs',
+            },
+            {
+                name: 'Total de Estrelas',
+                key: 'total_stars',
+            },
+        ];
 
     const contacts = [
         {
@@ -89,6 +120,58 @@ const Main = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
+    useEffect(() => {
+
+        gitHubService.getRepositories().then(res => {
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-explicit-any
+            const data = res.reduce((acm: any, cur: any) => {
+                if (!cur.language) {
+                    return acm;
+                }
+
+                if (acm[cur.language]) {
+                    acm[cur.language] = acm[cur.language] + cur.size;
+                } else {
+                    acm[cur.language] = cur.size;
+                }
+
+                return acm;
+            }, {});
+
+            setGraphic(data);
+        }).catch(err => console.log(err));
+        gitHubService.getCommits().then(res => {
+            setStatistics(s => {
+                return { ...s, total_commits: res }
+            });
+        }).catch(err => console.log(err));
+        gitHubService.getPullRequests().then(res => {
+            setStatistics(s => {
+                return { ...s, total_prs: res }
+            });
+        }).catch(err => console.log(err));
+        gitHubService.getRepositories().then(res => {
+            setStatistics(s => {
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                return { ...s, total_stars: res.filter((r: any) => r.stargazers_count).reduce((acm: any, cur: any) => acm + cur.stargazers_count, 0) }
+            });
+        }).catch(err => console.log(err));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const orderGraphicValues: any= () => {
+        const entries = Object.entries(graphic);
+
+        // Ordenar o array com base nos valores
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        entries.sort((a: any, b: any) => b[1] - a[1]);
+
+        // Construir um novo objeto JSON a partir do array ordenado (opcional)
+        const sortedJson = Object.fromEntries(entries);
+        return sortedJson;
+    }
+
     const handleDownloadPDF = () => {
         // URL do PDF existente
         const pdfUrl = curriculoPDF;
@@ -119,6 +202,11 @@ const Main = () => {
         const today = moment();
         const birthday = moment(dateInit);
         return moment.duration(today.diff(birthday)).years();
+    }
+
+    const getStatict = (key: string) => {
+        const data = statistics[key as keyof typeof statistics];
+        return data;
     }
 
     return (<div className={classNames(stylesTheme.light, styles.main)}>
@@ -164,9 +252,9 @@ const Main = () => {
                 <section className={styles.main__about} id="about">
                     <article>
                         <Typography variant='h4' className={styles.main__about__title}>Sobre</Typography>
-                        <p>Olá! Sou Affonso Ruiz, tenho { getYearsOld() } anos de idade e sou um Analista e Desenvolvedor de Sistemas formado pela renomada Faculdade Metropolitana de Manaus (Fametro), com uma sólida formação técnica em Informática pelo Instituto Federal de Educação, Ciência e Tecnologia do Amazonas (IFAM).</p>
+                        <p>Olá! Sou Affonso Ruiz, tenho {getYearsOld()} anos de idade e sou um Analista e Desenvolvedor de Sistemas formado pela renomada Faculdade Metropolitana de Manaus (Fametro), com uma sólida formação técnica em Informática pelo Instituto Federal de Educação, Ciência e Tecnologia do Amazonas (IFAM).</p>
 
-                        <p>Com mais de { getDiferenceYears("2018-02-01") } anos dedicados ao estudo e prática da programação, possuo cerca de { getDiferenceYears("2021-12-13") } anos de experiência como Desenvolvedor FullStack Web, período em que concentrei meus esforços na criação de robustas API Rest, desenvolvimento de páginas web dinâmicas e integrações de processos de comunicação, contribuindo ativamente para projetos profissionais.</p>
+                        <p>Com mais de {getDiferenceYears("2018-02-01")} anos dedicados ao estudo e prática da programação, possuo cerca de {getDiferenceYears("2021-12-13")} anos de experiência como Desenvolvedor FullStack Web, período em que concentrei meus esforços na criação de robustas API Rest, desenvolvimento de páginas web dinâmicas e integrações de processos de comunicação, contribuindo ativamente para projetos profissionais.</p>
 
                         <p>Além disso, tive a oportunidade de participar do desenvolvimento de diversas aplicações, incluindo web (backend e frontend), mobile, jogos, desktop e automação industrial.</p>
 
@@ -254,6 +342,75 @@ const Main = () => {
                                 </CardContent>
                             </Card>
                         ))}
+                    </div>
+                </section>
+
+                <hr className={styles.main__division}></hr>
+
+                <section className={styles.main__statistics} id="statistics">
+                    <Typography variant='h4' className={styles.main__statistics__text}>Estatísticas do GitHub</Typography>
+                    <div className={styles.main__statistics__body}>
+                        {statisticsNames.map((p) => (
+                            <Card
+                                key={p.name}
+                                className={styles.main__statistics__card}
+                                sx={{
+                                    flex: 1,
+                                    minWidth: "230px",
+                                    minHeight: '120px',
+                                    m: 0,
+                                    p: "16px",
+                                    alignItems: 'flex-start',
+                                    justifyContent: 'flex-start',
+                                    display: "flex",
+                                    flexDirection: "column"
+                                }}>
+                                <Typography gutterBottom variant="h6" component="div" className={styles.main__statistics__card__title}>
+                                    {p.name}
+                                </Typography>
+                                <Typography gutterBottom variant="h4" component="div" className={styles.main__statistics__card__content}>
+                                    {getStatict(p.key)}
+                                </Typography>
+                            </Card>
+                        ))}
+                    </div>
+                    <div className={styles.main__statistics__body} style={{
+                        marginTop: 0
+                    }}>
+                        <Tooltip title={<h2>
+                            👨‍💻 Programando!
+                        </h2>} placement='right'>
+
+                            <Card
+                                className={classNames([styles.main__statistics__card, styles.main__statistics__card__profile])}>
+                                <div
+                                    style={{
+                                        width: '100%',
+                                        flex: 1,
+                                        background: `url(${profileGitHub})`,
+                                        padding: 0,
+                                        backgroundRepeat: 'no-repeat',
+                                        backgroundSize: 'cover',
+                                        backgroundPosition: 'center center',
+                                        objectFit: 'fill',
+                                        display: 'block'
+                                    }}
+                                />
+                                <Typography gutterBottom variant="h5" component="div" className={styles.main__statistics__card__title} style={{
+                                    alignSelf: 'center',
+                                    margin: '8px 0px 0px 0px'
+                                }}>
+                                    RuizHenrique01
+                                </Typography>
+                            </Card>
+                        </Tooltip>
+                        <Card
+                            className={classNames([styles.main__statistics__card, styles.main__statistics__card__graph])}>
+                            <Typography gutterBottom variant="h6" component="div" className={styles.main__statistics__card__title}>
+                                Linguagens Mais Usadas
+                            </Typography>
+                            <PieDonutChart series={Object.values(orderGraphicValues()).slice(0,5)} labels={Object.keys(orderGraphicValues()).slice(0,5)} />
+                        </Card>
                     </div>
                 </section>
 
