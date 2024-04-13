@@ -123,7 +123,7 @@ const Main = () => {
     useEffect(() => {
 
         gitHubService.getRepositories().then(res => {
-            // eslint-disable-next-line @typescript-eslint/no-unused-vars
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-explicit-any
             const data = res.reduce((acm: any, cur: any) => {
                 if (!cur.language) {
                     return acm;
@@ -159,11 +159,13 @@ const Main = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    const orderGraphicValues = () => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const orderGraphicValues: any= () => {
         const entries = Object.entries(graphic);
 
         // Ordenar o array com base nos valores
-        entries.sort((a, b) => b[1] - a[1]);
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        entries.sort((a: any, b: any) => b[1] - a[1]);
 
         // Construir um novo objeto JSON a partir do array ordenado (opcional)
         const sortedJson = Object.fromEntries(entries);
@@ -200,6 +202,11 @@ const Main = () => {
         const today = moment();
         const birthday = moment(dateInit);
         return moment.duration(today.diff(birthday)).years();
+    }
+
+    const getStatict = (key: string) => {
+        const data = statistics[key as keyof typeof statistics];
+        return data;
     }
 
     return (<div className={classNames(stylesTheme.light, styles.main)}>
@@ -362,7 +369,7 @@ const Main = () => {
                                     {p.name}
                                 </Typography>
                                 <Typography gutterBottom variant="h4" component="div" className={styles.main__statistics__card__content}>
-                                    {statistics[p.key]}
+                                    {getStatict(p.key)}
                                 </Typography>
                             </Card>
                         ))}

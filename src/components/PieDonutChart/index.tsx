@@ -2,7 +2,8 @@ import Chart from "react-apexcharts";
 import { ApexOptions } from "apexcharts";
 
 interface IProps {
-    series: Array<number>,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    series: Array<number | any>,
     labels: Array<string>,
 }
 
