@@ -7,7 +7,6 @@ export class GitHubService {
     async getRepositories(){
         try{
         const response = await axios.get("https://api.github.com/users/RuizHenrique01/repos?per_page=100");
-        console.log(response.data)
         return response.data;
     } catch(_) {
         throw new Error("Falha ao obter repositórios!");
