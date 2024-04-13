@@ -14,8 +14,11 @@ import { enqueueSnackbar } from 'notistack';
 import moment from 'moment';
 import profileGitHub from '../../assets/profile2.jpeg';
 import PieDonutChart from '../../components/PieDonutChart';
+import { GitHubService } from '../../services/GitHub.service';
 
 const Main = () => {
+
+    const gitHubService = new GitHubService();
 
     const helloMessages = [
         <p>printf(<span className={stylesTheme.text_secondary}>"Hello World!"</span>);</p>,
@@ -28,20 +31,31 @@ const Main = () => {
     const [messages] = useState(helloMessages);
     const [count, setCount] = useState<number>(0);
 
-    const [statistics,] = useState<Array<{ name: string, statistic: number }>>([
-        {
-            name: 'Total de Commits',
-            statistic: 567
-        },
-        {
-            name: 'Total de PRs',
-            statistic: 70
-        },
-        {
-            name: 'Total de Estrelas',
-            statistic: 3
-        },
-    ]);
+    const [statistics, setStatistics] = useState({
+        total_commits: 0,
+        total_prs: 0,
+        total_stars: 0
+    });
+
+    const [graphic, setGraphic] = useState({});
+
+    const statisticsNames: Array<{
+        name: string;
+        key: string;
+    }> = [
+            {
+                name: 'Total de Commits',
+                key: 'total_commits',
+            },
+            {
+                name: 'Total de PRs',
+                key: 'total_prs',
+            },
+            {
+                name: 'Total de Estrelas',
+                key: 'total_stars',
+            },
+        ];
 
     const contacts = [
         {
@@ -105,6 +119,56 @@ const Main = () => {
         };
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+
+    useEffect(() => {
+
+        gitHubService.getRepositories().then(res => {
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
+            const data = res.reduce((acm: any, cur: any) => {
+                if (!cur.language) {
+                    return acm;
+                }
+
+                if (acm[cur.language]) {
+                    acm[cur.language] = acm[cur.language] + cur.size;
+                } else {
+                    acm[cur.language] = cur.size;
+                }
+
+                return acm;
+            }, {});
+
+            setGraphic(data);
+        }).catch(err => console.log(err));
+        gitHubService.getCommits().then(res => {
+            setStatistics(s => {
+                return { ...s, total_commits: res }
+            });
+        }).catch(err => console.log(err));
+        gitHubService.getPullRequests().then(res => {
+            setStatistics(s => {
+                return { ...s, total_prs: res }
+            });
+        }).catch(err => console.log(err));
+        gitHubService.getRepositories().then(res => {
+            setStatistics(s => {
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                return { ...s, total_stars: res.filter((r: any) => r.stargazers_count).reduce((acm: any, cur: any) => acm + cur.stargazers_count, 0) }
+            });
+        }).catch(err => console.log(err));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+    const orderGraphicValues = () => {
+        const entries = Object.entries(graphic);
+
+        // Ordenar o array com base nos valores
+        entries.sort((a, b) => b[1] - a[1]);
+
+        // Construir um novo objeto JSON a partir do array ordenado (opcional)
+        const sortedJson = Object.fromEntries(entries);
+        return sortedJson;
+    }
 
     const handleDownloadPDF = () => {
         // URL do PDF existente
@@ -279,7 +343,7 @@ const Main = () => {
                 <section className={styles.main__statistics} id="statistics">
                     <Typography variant='h4' className={styles.main__statistics__text}>Estatísticas do GitHub</Typography>
                     <div className={styles.main__statistics__body}>
-                        {statistics.map(p => (
+                        {statisticsNames.map((p) => (
                             <Card
                                 key={p.name}
                                 className={styles.main__statistics__card}
@@ -298,7 +362,7 @@ const Main = () => {
                                     {p.name}
                                 </Typography>
                                 <Typography gutterBottom variant="h4" component="div" className={styles.main__statistics__card__content}>
-                                    {p.statistic}
+                                    {statistics[p.key]}
                                 </Typography>
                             </Card>
                         ))}
@@ -338,7 +402,7 @@ const Main = () => {
                             <Typography gutterBottom variant="h6" component="div" className={styles.main__statistics__card__title}>
                                 Linguagens Mais Usadas
                             </Typography>
-                            <PieDonutChart />
+                            <PieDonutChart series={Object.values(orderGraphicValues()).slice(0,5)} labels={Object.keys(orderGraphicValues()).slice(0,5)} />
                         </Card>
                     </div>
                 </section>
