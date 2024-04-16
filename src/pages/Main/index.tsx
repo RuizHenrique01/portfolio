@@ -124,7 +124,7 @@ const Main = () => {
 
         gitHubService.getRepositories().then(res => {
             // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-explicit-any
-            const data = res.reduce((acm: any, cur: any) => {
+            const data = res.filter((r: any) => !r.fork).reduce((acm: any, cur: any) => {
                 if (!cur.language) {
                     return acm;
                 }
@@ -409,7 +409,7 @@ const Main = () => {
                             <Typography gutterBottom variant="h6" component="div" className={styles.main__statistics__card__title}>
                                 Linguagens Mais Usadas
                             </Typography>
-                            <PieDonutChart series={Object.values(orderGraphicValues()).slice(0,5)} labels={Object.keys(orderGraphicValues()).slice(0,5)} />
+                            <PieDonutChart series={Object.values(orderGraphicValues()).slice(0,4)} labels={Object.keys(orderGraphicValues()).slice(0,4)} />
                         </Card>
                     </div>
                 </section>
