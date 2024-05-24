@@ -1,7 +1,11 @@
+import GrupoICTSLogo from '../assets/grupo_icts_logo.jpg';
+import IFAMLogo from '../assets/ifam_logo.jpg';
+import FametroLogo from '../assets/soufametro_logo.jpg';
+
 const experience = [
     {
         company: 'IFAM',
-        logo: 'https://media.licdn.com/dms/image/C4D0BAQF9RvU3j-KtJw/company-logo_100_100/0/1631356933047/instituto_federal_de_educacao_ciencia_e_tecnologia_do_amazonas_ifam_logo?e=1714003200&v=beta&t=cUu5ypRRffzievmL4gg_OSpwOHzaINmTi2Ls1qZxDSU',
+        logo: IFAMLogo,
         role: 'Técnico em Informática',
         time: 'Fev/2018 - Jan/2020',
         activities: [
@@ -10,7 +14,7 @@ const experience = [
     },
     {
         company: 'FAMETRO',
-        logo: 'https://media.licdn.com/dms/image/C4E0BAQEIeFVlnBkG7w/company-logo_100_100/0/1679522019739/soufametro_logo?e=1714003200&v=beta&t=1aiQfPfIrzx8_QOrlanZtElFxbMYD2BlSaQ7aufP2P4',
+        logo: FametroLogo,
         role: 'Analista e Desenvolvedor de Sistemas',
         time: 'Ago/2021 - Dez/2023',
         activities: [
@@ -19,7 +23,7 @@ const experience = [
     },
     {
         company: 'Grupo ICTS',
-        logo: 'https://media.licdn.com/dms/image/C4D0BAQFy9y5gyZoDPA/company-logo_200_200/0/1679069515524/grupo_icts_logo?e=1721865600&v=beta&t=fMZnhtdfT2zSKNGER1UKecIvuxd9Dquvaa6EoAphoFI',
+        logo: GrupoICTSLogo,
         role: 'Desenvolvedor Full Stack Junior',
         time: 'Dez/2021 - Fev/2024',
         activities: [
@@ -32,7 +36,7 @@ const experience = [
     },
     {
         company: 'Grupo ICTS',
-        logo: 'https://media.licdn.com/dms/image/C4D0BAQFy9y5gyZoDPA/company-logo_200_200/0/1679069515524/grupo_icts_logo?e=1721865600&v=beta&t=fMZnhtdfT2zSKNGER1UKecIvuxd9Dquvaa6EoAphoFI',
+        logo: GrupoICTSLogo,
         role: 'Desenvolvedor Full Stack Pleno',
         time: 'Mar/2024 - Atual',
         activities: [
