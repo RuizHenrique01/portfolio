@@ -25,7 +25,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-                    sh '''
+                    bat '''
                     ftp -inv <<EOF
                     open ${HOST}
                     user ${USER} ${PASSWORD}
