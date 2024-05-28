@@ -5,17 +5,13 @@ pipeline {
     stages {
         stage('Install Dependecies') {
             steps {
-                script {
-                    sh 'npm install'
-                }
+                sh 'npm install'
             }
         }
 
         stage('Build Project') {
             steps {
-                script {
-                    sh 'npm run build'
-                }
+                sh 'npm run build'
             }
         }
     }
