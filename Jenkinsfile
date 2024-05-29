@@ -26,9 +26,9 @@ pipeline {
                 script {
                     bat '''
                         @echo off
-                        echo user %LOGIN_USR% %LOGIN_PSW% > ftpcmd.dat
+                        echo user ${LOGIN_USR} ${LOGIN_PSW} > ftpcmd.dat
                         echo bye >> ftpcmd.dat
-                        ftp -n -s:ftpcmd.dat %HOST%
+                        ftp -n -s:ftpcmd.dat ${HOST}
                         del ftpcmd.dat
                     '''
                 }
