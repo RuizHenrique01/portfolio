@@ -27,9 +27,9 @@ pipeline {
                 script {
                     bat'''
                         @echo off
-                        echo user ${USER} ${PASSWORD} > ftpcmd.dat
+                        echo user $USER $PASSWORD > ftpcmd.dat
                         echo bye >> ftpcmd.dat
-                        ftp -n -s:ftpcmd.dat ${HOST}
+                        ftp -n -s:ftpcmd.dat $HOST
                         del ftpcmd.dat
                     '''
                 }
