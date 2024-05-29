@@ -25,7 +25,7 @@ pipeline {
             steps {
                 script {
                     bat ''' 
-                        @echo off \
+                        @echo off
                         echo user %LOGIN_USR% %LOGIN_PSW% > ftpcmd.dat
                         echo binary >> ftpcmd.dat
                         echo cd %REMOTE_PATH%assets >> ftpcmd.dat
