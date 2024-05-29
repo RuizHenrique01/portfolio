@@ -4,8 +4,7 @@ pipeline {
 
      environment {
         HOST = credentials('FTP_HOST')
-        USER = credentials('FTP_USER')
-        PASSWORD = credentials('FTP_PASSWORD')
+        LOGIN = credentials('FTP_LOGIN')
         REMOTE_PATH = credentials('FTP_REMOTE_PATH')
     }
 
@@ -25,13 +24,13 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-                    bat '''
+                    bat '
                         @echo off
-                        echo user USER PASSWORD > ftpcmd.dat
+                        echo user %LOGIN_USR% %LOGIN_PSW% > ftpcmd.dat
                         echo bye >> ftpcmd.dat
                         ftp -n -s:ftpcmd.dat %HOST%
                         del ftpcmd.dat
-                    '''
+                    '
                 }
             }
         }
