@@ -26,8 +26,7 @@ pipeline {
                 script {
                     bat ''' 
                         @echo off \
-                        echo prompt > ftpcmd.dat
-                        echo user %LOGIN_USR% %LOGIN_PSW% >> ftpcmd.dat
+                        echo user %LOGIN_USR% %LOGIN_PSW% > ftpcmd.dat
                         echo binary >> ftpcmd.dat
                         echo cd %REMOTE_PATH%assets >> ftpcmd.dat
                         echo lcd dist/assets >> ftpcmd.dat
@@ -36,7 +35,7 @@ pipeline {
                         echo lcd .. >> ftpcmd.dat
                         echo mput * >> ftpcmd.dat
                         echo bye >> ftpcmd.dat
-                        ftp -n -s:ftpcmd.dat %HOST%
+                        ftp -inv -s:ftpcmd.dat %HOST%
                         del ftpcmd.dat
                     '''
                 }
