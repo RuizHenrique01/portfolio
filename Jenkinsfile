@@ -25,13 +25,13 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-                    bat'''
+                    bat("
                         @echo off
                         echo user $USER $PASSWORD > ftpcmd.dat
                         echo bye >> ftpcmd.dat
                         ftp -n -s:ftpcmd.dat $HOST
                         del ftpcmd.dat
-                    '''
+                    ")
                 }
             }
         }
