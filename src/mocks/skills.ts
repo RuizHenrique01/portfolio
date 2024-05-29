@@ -1,3 +1,5 @@
+import hostgator from '../assets/hostgator.svg';
+
 const skills = [
     {
         name: 'JavaScript',
@@ -127,6 +129,14 @@ const skills = [
         name: 'PuTTY',
         img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/putty/putty-original.svg'
     },
+    {
+        name: 'Jenkins',
+        img: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jenkins/jenkins-original.svg'
+    },
+    {
+        name: 'HostGator',
+        img: hostgator
+    }
 ];
 
 export default skills;
