@@ -24,13 +24,21 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-                    bat ' 
+                    bat ''' 
                         @echo off \
-                        echo user user pass > ftpcmd.dat \
-                        echo bye >> ftpcmd.dat \
-                        ftp -n -s:ftpcmd.dat %HOST% \ 
-                        del ftpcmd.dat \
-                    '
+                        echo prompt > ftpcmd.dat
+                        echo user %LOGIN_USR% %LOGIN_PSW% >> ftpcmd.dat
+                        echo binary >> ftpcmd.dat
+                        echo cd %REMOTE_PATH%assets >> ftpcmd.dat
+                        echo lcd dist/assets >> ftpcmd.dat
+                        echo mput * >> ftpcmd.dat
+                        echo cd /public_html/ >> ftpcmd.dat
+                        echo lcd .. >> ftpcmd.dat
+                        echo mput * >> ftpcmd.dat
+                        echo bye >> ftpcmd.dat
+                        ftp -n -s:ftpcmd.dat %HOST%
+                        del ftpcmd.dat
+                    '''
                 }
             }
         }
