@@ -25,8 +25,11 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-                    bat 'ftp -inv '
-                    bat 'bye'
+                    bat'''
+                        @echo off
+                        ftp
+                        bye
+                    '''
                 }
             }
         }
