@@ -429,8 +429,8 @@ const Main = () => {
                             },
                         }}>
                             {
-                                experience.map(e => (
-                                    <TimelineItem key={e.company}
+                                experience.map((e, i) => (
+                                    <TimelineItem key={i}
                                         sx={
                                             {
                                                 width: '100%',

@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import Loading from "./pages/Loading";
 import Main from "./pages/Main"
-import { BrowserRouter as Router } from "react-router-dom";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import { SnackbarProvider } from "notistack";
+import RedirectGuardRoute from "./guards/redirect.guard";
 
 function App() {
 
@@ -23,10 +24,14 @@ function App() {
   return (
     <SnackbarProvider>
       <Router>
-        {isLoading ?
-          <Loading /> :
-          <Main />
-        }
+        <Routes>
+          <Route path="" element={<RedirectGuardRoute />}>
+            <Route path="" element={isLoading ?
+              <Loading /> :
+              <Main />
+            } />
+          </Route>
+        </Routes>
       </Router>
     </SnackbarProvider>
   )
