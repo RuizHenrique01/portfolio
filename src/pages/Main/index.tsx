@@ -15,6 +15,7 @@ import moment from 'moment';
 import profileGitHub from '../../assets/profile2.jpeg';
 import PieDonutChart from '../../components/PieDonutChart';
 import { GitHubService } from '../../services/GitHub.service';
+import hideLanguages from '../../mocks/hideLanguages';
 
 const Main = () => {
 
@@ -125,7 +126,7 @@ const Main = () => {
         gitHubService.getRepositories().then(res => {
             // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-explicit-any
             const data = res.filter((r: any) => !r.fork).reduce((acm: any, cur: any) => {
-                if (!cur.language) {
+                if (!cur.language || hideLanguages.some(h => h.toLowerCase() === cur!.language.toLowerCase())) {
                     return acm;
                 }
 
