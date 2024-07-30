@@ -42,6 +42,10 @@ const skills = [
         img: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nestjs/nestjs-original.svg'
     },
     {
+        name: 'Angular',
+        img: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/angular/angular-original.svg'
+    },
+    {
         name: 'MongoDB',
         img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original-wordmark.svg'
     },
@@ -52,6 +56,10 @@ const skills = [
     {
         name: 'MySQL',
         img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg'
+    },
+    {
+        name: 'MSSQL',
+        img: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/microsoftsqlserver/microsoftsqlserver-original-wordmark.svg'
     },
     {
         name: 'Firebase',
@@ -100,6 +108,10 @@ const skills = [
     {
         name: '.Net',
         img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dotnetcore/dotnetcore-original.svg'
+    },
+    {
+        name: 'PHP',
+        img: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg'
     },
     {
         name: 'Golang',

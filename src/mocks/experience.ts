@@ -10,7 +10,8 @@ const experience = [
         time: 'Fev/2018 - Jan/2020',
         activities: [
             "Ensino Médio Técnico.",
-        ]
+        ],
+        type: 'STUDY'
     },
     {
         company: 'FAMETRO',
@@ -19,7 +20,8 @@ const experience = [
         time: 'Ago/2021 - Dez/2023',
         activities: [
             "Tecnólogo em Análise e Desenvolvimento de Sistemas.",
-        ]
+        ],
+        type: 'STUDY'
     },
     {
         company: 'Grupo ICTS',
@@ -32,7 +34,8 @@ const experience = [
             "Gerenciamento e modelagem de banco de dados.",
             "Participação em projeto de automação industrial, desenvolvendo processos de comunicação entre máquinas.",
             "Trabalho em equipe utilizando a metodologia Scrum."
-        ]
+        ],
+        type: 'WORK'
     },
     {
         company: 'Grupo ICTS',
@@ -48,7 +51,8 @@ const experience = [
             "Resolução de problemas complexos e depuração de erros difíceis.",
             "Participação ativa em processos de revisão de código e colaboração na definição de padrões de codificação.",
             "Contribuição para a arquitetura de software e decisões de design."
-        ]
+        ],
+        type: 'WORK'
     }
 ];
 

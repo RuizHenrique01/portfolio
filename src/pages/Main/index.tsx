@@ -3,7 +3,7 @@ import styles from './Main.module.scss';
 import stylesTheme from '../../styles/Theme.module.scss';
 import Header from '../../components/Header';
 import { Button, Card, CardContent, IconButton, Tooltip, Typography } from '@mui/material';
-import { Call, GitHub, Instagram, LinkedIn, Mail, Terminal } from '@mui/icons-material';
+import { Call, Engineering, GitHub, Instagram, LinkedIn, Mail, School, Terminal } from '@mui/icons-material';
 import { useEffect, useState } from 'react';
 import curriculoPDF from '../../assets/Curriculo - Affonso Ruiz 2024 - V2.pdf'
 import skills from '../../mocks/skills';
@@ -27,8 +27,10 @@ const Main = () => {
         <p>fmt.Println(<span className={stylesTheme.text_secondary}>"Hello World!"</span>)</p>,
         <p>std::cout &lt;&lt; <span className={stylesTheme.text_secondary}>"Hello World!"</span>;</p>,
         <p>print(<span className={stylesTheme.text_secondary}>"Hello World!"</span>)</p>,
+        <p>echo <span className={stylesTheme.text_secondary}>"Hello World!"</span>;</p>,
         <p>System.out.println(<span className={stylesTheme.text_secondary}>"Hello World!"</span>);</p>,
-        <p>Console.WriteLine(<span className={stylesTheme.text_secondary}>"Hello World!"</span>);</p>];
+        <p>Console.WriteLine(<span className={stylesTheme.text_secondary}>"Hello World!"</span>);</p>
+    ];
     const [messages] = useState(helloMessages);
     const [count, setCount] = useState<number>(0);
 
@@ -445,10 +447,12 @@ const Main = () => {
                                             height: '100%',
                                         }}>
                                             <TimelineDot sx={{
-                                                width: '18px',
-                                                height: '18px',
-                                            }} />
-                                            <TimelineConnector />
+                                                color: '#d27619',
+                                                backgroundColor: 'transparent'
+                                            }}>
+                                                {e.type === 'WORK'? <Engineering fontSize='large'/> : <School fontSize='large'/>}
+                                            </TimelineDot>
+                                            <TimelineConnector sx={{bgcolor: '#d27619'}}/>
                                         </TimelineSeparator>
                                         <TimelineContent>
                                             <Card
