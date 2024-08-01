@@ -5,7 +5,7 @@ import Header from '../../components/Header';
 import { Button, Card, CardContent, IconButton, Tooltip, Typography } from '@mui/material';
 import { Call, Engineering, GitHub, Instagram, LinkedIn, Mail, School, Terminal } from '@mui/icons-material';
 import { useEffect, useState } from 'react';
-import curriculoPDF from '../../assets/Curriculo - Affonso Ruiz 2024 - V2.pdf'
+import curriculoPDF from '../../assets/Curriculo v2.0 - Affonso Ruiz 2024.pdf'
 import skills from '../../mocks/skills';
 import projects from '../../mocks/projects';
 import { Timeline, TimelineConnector, TimelineContent, TimelineDot, TimelineItem, TimelineSeparator, timelineItemClasses } from '@mui/lab';
