@@ -278,10 +278,10 @@ const Main = () => {
                                 <Card
                                     className={styles.main__skills__card}
                                     key={s.name}
-                                    // onClick={() => 
-                                    //     {
-                                    //         window.open('https://stackoverflow.com/questions/6983026/javascript-assign-array-values-to-multiple-variables')
-                                    // }}
+                                    onClick={() => 
+                                        {
+                                            window.open(s.link)
+                                    }}
                                     sx={{ width: 130, height: 170, pt: '16px', pb: '16px', pl: '8px', pr: '8px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                                     <img
                                         width="90px"
