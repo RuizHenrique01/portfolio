@@ -16,6 +16,7 @@ import profileGitHub from '../../assets/profile2.jpeg';
 import PieDonutChart from '../../components/PieDonutChart';
 import { GitHubService } from '../../services/GitHub.service';
 import hideLanguages from '../../mocks/hideLanguages';
+import CardProject from '../../components/CardProject';
 
 const Main = () => {
 
@@ -33,7 +34,18 @@ const Main = () => {
     ];
     const [messages] = useState(helloMessages);
     const [count, setCount] = useState<number>(0);
-
+    const [opencardProject, setOpencardProjec] = useState<boolean>(false);
+    const [cardContent, setCardContent] = useState<{
+        title: string,
+        images: Array<string>,
+        languages: Array<string>,
+        body: JSX.Element
+    }>({
+        title: '',
+        images: [],
+        languages: [],
+        body:<></>
+    });
     const [statistics, setStatistics] = useState({
         total_commits: 0,
         total_prs: 0,
@@ -163,7 +175,7 @@ const Main = () => {
     }, []);
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const orderGraphicValues: any= () => {
+    const orderGraphicValues: any = () => {
         const entries = Object.entries(graphic);
 
         // Ordenar o array com base nos valores
@@ -213,6 +225,12 @@ const Main = () => {
     }
 
     return (<div className={classNames(stylesTheme.light, styles.main)}>
+        <CardProject open={opencardProject} setOpen={setOpencardProjec} 
+        images={cardContent.images} 
+        title={cardContent.title}
+        languages={cardContent.languages}
+        body={cardContent.body}
+        />
         <Header />
         <div className={classNames(stylesTheme.background, styles.main__body)}>
             <div className={styles.main__shape}>
@@ -278,9 +296,8 @@ const Main = () => {
                                 <Card
                                     className={styles.main__skills__card}
                                     key={s.name}
-                                    onClick={() => 
-                                        {
-                                            window.open(s.link)
+                                    onClick={() => {
+                                        window.open(s.link)
                                     }}
                                     sx={{ width: 130, height: 170, pt: '16px', pb: '16px', pl: '8px', pr: '8px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                                     <img
@@ -310,12 +327,21 @@ const Main = () => {
                             <Card
                                 key={p.title}
                                 className={styles.main__projects__card}
+                                onClick={() => {
+                                    setOpencardProjec(true)
+
+                                    setCardContent({
+                                        ...p.content!,
+                                        title: p.title
+                                    })
+                                }}
                                 sx={{
                                     width: '400px',
                                     minHeight: '450px',
                                     m: 0,
                                     alignItems: 'flex-start',
                                     justifyContent: 'flex-start',
+                                    cursor: 'pointer'
                                 }}>
                                 <div
                                     style={{
@@ -412,7 +438,7 @@ const Main = () => {
                             <Typography gutterBottom variant="h6" component="div" className={styles.main__statistics__card__title}>
                                 Linguagens Mais Usadas
                             </Typography>
-                            <PieDonutChart series={Object.values(orderGraphicValues()).slice(0,4)} labels={Object.keys(orderGraphicValues()).slice(0,4)} />
+                            <PieDonutChart series={Object.values(orderGraphicValues()).slice(0, 4)} labels={Object.keys(orderGraphicValues()).slice(0, 4)} />
                         </Card>
                     </div>
                 </section>
@@ -450,9 +476,9 @@ const Main = () => {
                                                 color: '#d27619',
                                                 backgroundColor: 'transparent'
                                             }}>
-                                                {e.type === 'WORK'? <Engineering fontSize='large'/> : <School fontSize='large'/>}
+                                                {e.type === 'WORK' ? <Engineering fontSize='large' /> : <School fontSize='large' />}
                                             </TimelineDot>
-                                            <TimelineConnector sx={{bgcolor: '#d27619'}}/>
+                                            <TimelineConnector sx={{ bgcolor: '#d27619' }} />
                                         </TimelineSeparator>
                                         <TimelineContent>
                                             <Card
