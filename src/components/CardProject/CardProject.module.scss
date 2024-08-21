@@ -1,0 +1,99 @@
+@import '../../styles/variables';
+
+.cardProject {
+    
+    &__container {
+        display: flex;
+        height: 100%;
+        position: relative;
+        overflow: hidden;
+
+        @media (max-width: $large) {
+            flex-direction: column;
+            overflow-y: auto;
+
+            &::-webkit-scrollbar {
+                width: 8px;
+            }
+            
+            /* Track */
+            &::-webkit-scrollbar-track {
+                background: $background;
+                opacity: 1;
+              }
+               
+              /* Handle */
+            &::-webkit-scrollbar-thumb {
+                background: $secondary-color; 
+                border-radius: 2px;
+            }
+            
+            /* Handle on hover */
+            &::-webkit-scrollbar-thumb:hover {
+                background: $secondary-variant-color;
+            }
+        }
+        
+        &__carousel{
+            width: 100%;
+            height: 100%;
+            flex: 2;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+        
+        &__content {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            padding: 8px 16px;
+            padding-top: 64px;
+            flex: 1;
+            overflow-y: auto;
+
+            @media (max-width: $large) {
+                overflow-y: visible;
+            }
+
+            &::-webkit-scrollbar {
+                width: 8px;
+            }
+            
+            /* Track */
+            &::-webkit-scrollbar-track {
+                background: $background;
+                opacity: 1;
+              }
+               
+              /* Handle */
+            &::-webkit-scrollbar-thumb {
+                background: $secondary-color; 
+                border-radius: 2px;
+            }
+            
+            /* Handle on hover */
+            &::-webkit-scrollbar-thumb:hover {
+                background: $secondary-variant-color;
+            }
+            
+            &__bagde{
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 8px;
+                margin: 18px 0px;
+            }
+
+            &__body {
+                padding: 0px 32px;
+                text-align: justify;
+                @media (max-width: $large) {
+                    padding-bottom: 72px;
+                }
+            }
+        }
+    }
+}
