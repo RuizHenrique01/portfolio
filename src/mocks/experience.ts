@@ -29,11 +29,14 @@ const experience = [
         role: 'Desenvolvedor Full Stack Junior',
         time: 'Dez/2021 - Fev/2024',
         activities: [
-            "Desenvolvimento de aplicações backend e frontend.",
+            "Responsável pelo desenvolvimento de aplicações back-end (REST API, RESTful API).",
+            "Responsável pelo desenvolvimento de aplicações front-end.",
+            "Realização do deploy das aplicações em ambiente de homologação e produção.",
             "Desenvolvimento de processos de integração e comunicação entre aplicações.",
             "Gerenciamento e modelagem de banco de dados.",
-            "Participação em projeto de automação industrial, desenvolvendo processos de comunicação entre máquinas.",
-            "Trabalho em equipe utilizando a metodologia Scrum."
+            "Realização de pair programming para o desenvolvimento de algumas funcionalidades.",
+            "Estudo contínuo de novas tecnologias, frameworks e boas práticas de desenvolvimento, geralmente orientado por um tech lead.",
+            "Criação e atualização de documentação para funcionalidades e código, ajudando a manter o conhecimento acessível e organizado."
         ],
         type: 'WORK'
     },
@@ -43,17 +46,19 @@ const experience = [
         role: 'Desenvolvedor Full Stack Pleno',
         time: 'Mar/2024 - Atual',
         activities: [
-            "Implementação de funcionalidades avançadas e soluções técnicas mais sofisticadas.",
-            "Otimização de desempenho e escalabilidade das aplicações.",
-            "Desenvolvimento de APIs robustas e seguras.",
-            "Utilização avançada de frameworks e bibliotecas.",
-            "Integração de sistemas legados.",
-            "Resolução de problemas complexos e depuração de erros difíceis.",
+            "Responsável pelo desenvolvimento de aplicações back-end (REST API, RESTful API).",
+            "Responsável pelo desenvolvimento de aplicações front-end.",
+            "Realização do deploy das aplicações em ambiente de homologação e produção.",
+            "Aplicação de design patterns para solução de problemas.",
+            "Resolução de problemas complexos e depuração de erros críticos.",
             "Participação ativa em processos de revisão de código e colaboração na definição de padrões de codificação.",
-            "Contribuição para a arquitetura de software e decisões de design."
+            "Contribuição para a arquitetura de software e decisões de design.",
+            "Realização de integração e comunicação entre aplicações e dispositivos.",
+            "Gerenciamento e modelagem de banco de dados.",
+            "Colaboração com outros desenvolvedores, participação em reuniões de sprint, e auxílio a desenvolvedores juniores, ajudando-os a crescer tecnicamente."
         ],
         type: 'WORK'
     }
-];
+].reverse();
 
 export default experience;
