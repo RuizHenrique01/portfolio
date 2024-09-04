@@ -1,9 +1,6 @@
 pipeline {
     agent any
-    tools {
-        nodejs "node"
-        python "Python3.11"    
-    }
+    tools {nodejs "node"}
 
      environment {
         HOST = credentials('FTP_HOST')
@@ -27,7 +24,7 @@ pipeline {
         stage('Tests') {
             steps {
                 bat 'npm run test'
-                bat 'python test_main.py'
+                bat 'python3 test_main.py'
             }
         }
 
