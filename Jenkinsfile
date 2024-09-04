@@ -24,7 +24,7 @@ pipeline {
         stage('Tests') {
             steps {
                 bat 'npm run test'
-                bat 'python3 test_main.py'
+                bat 'python test_main.py'
             }
         }
 
