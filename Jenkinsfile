@@ -1,6 +1,5 @@
 pipeline {
     agent any
-    tools {nodejs "node"}
 
      environment {
         HOST = credentials('FTP_HOST')
