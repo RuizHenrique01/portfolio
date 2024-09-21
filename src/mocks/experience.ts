@@ -29,14 +29,14 @@ const experience = [
         role: 'Desenvolvedor Full Stack Junior',
         time: 'Dez/2021 - Fev/2024',
         activities: [
-            "Responsável pelo desenvolvimento de aplicações back-end (REST API, RESTful API).",
-            "Responsável pelo desenvolvimento de aplicações front-end.",
-            "Realização do deploy das aplicações em ambiente de homologação e produção.",
+            "Responsável pelo desenvolvimento de aplicações back-end (REST API, RESTful API), utilizando Express.js e SequelizeORM com JavaScript e TypeScript.",
+            "Responsável pelo desenvolvimento de aplicações front-end, utilizando React.js, Material UI, Redux e Redux-Saga.",
+            "Realização do deploy das aplicações em ambiente de homologação e produção utilizando Git e PM2.",
+            "Gerenciamento e modelagem de banco de dados utilizando MSSQL.",
+            "Responsável pela integração de catracas Topdata, utilizando C# e .NET.",
             "Desenvolvimento de processos de integração e comunicação entre aplicações.",
-            "Gerenciamento e modelagem de banco de dados.",
-            "Realização de pair programming para o desenvolvimento de algumas funcionalidades.",
             "Estudo contínuo de novas tecnologias, frameworks e boas práticas de desenvolvimento, geralmente orientado por um tech lead.",
-            "Criação e atualização de documentação para funcionalidades e código, ajudando a manter o conhecimento acessível e organizado."
+            "Criação e atualização de documentação para funcionalidades e código."
         ],
         type: 'WORK'
     },
@@ -46,16 +46,16 @@ const experience = [
         role: 'Desenvolvedor Full Stack Pleno',
         time: 'Mar/2024 - Atual',
         activities: [
-            "Responsável pelo desenvolvimento de aplicações back-end (REST API, RESTful API).",
-            "Responsável pelo desenvolvimento de aplicações front-end.",
-            "Realização do deploy das aplicações em ambiente de homologação e produção.",
-            "Aplicação de design patterns para solução de problemas.",
+            "Responsável pelo desenvolvimento de aplicações back-end (REST API, RESTful API), utilizando Python, FastAPI, SQLAlchemy, C#, .NET e ASP.NET Core REST API.",
+            "Responsável pelo desenvolvimento de aplicações front-end, utilizando React.js, Sass, Material UI e Recoil.",
+            "Realização do deploy das aplicações em ambiente de homologação e produção utilizando Git e Docker.",
+            "Gerenciamento e modelagem de banco de dados utilizando MSSQL.",
+            "Responsável por integração de solução da CodeSoft para impressão de etiquetas, utilizando C# e .NET.",
+            "Realização de integração e comunicação entre aplicações e dispositivos como robôs, CLPs e sistemas de visão utilizando Python.",
             "Resolução de problemas complexos e depuração de erros críticos.",
-            "Participação ativa em processos de revisão de código e colaboração na definição de padrões de codificação.",
-            "Contribuição para a arquitetura de software e decisões de design.",
-            "Realização de integração e comunicação entre aplicações e dispositivos.",
-            "Gerenciamento e modelagem de banco de dados.",
-            "Colaboração com outros desenvolvedores, participação em reuniões de sprint, e auxílio a desenvolvedores juniores, ajudando-os a crescer tecnicamente."
+            "Aplicação de design patterns para solução de problemas.",
+            "Participação ativa em processos de revisão de código pelo GitLab e colaboração na definição de padrões de codificação.",
+            "Colaboração com outros desenvolvedores e auxílio a desenvolvedores juniores, ajudando-os a crescer tecnicamente."
         ],
         type: 'WORK'
     }

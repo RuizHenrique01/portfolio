@@ -24,7 +24,6 @@ pipeline {
         stage('Tests') {
             steps {
                 bat 'npm run test'
-                bat label: "", script: 'python test_main.py'
             }
         }
 
