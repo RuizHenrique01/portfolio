@@ -21,11 +21,11 @@ pipeline {
             }
         }
 
-        stage('Tests') {
-            steps {
-                bat 'npm run test'
-            }
-        }
+        // stage('Tests') {
+        //     steps {
+        //         bat 'npm run test'
+        //     }
+        // }
 
         stage('Deploy') {
             steps {

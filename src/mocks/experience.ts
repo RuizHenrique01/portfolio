@@ -1,4 +1,5 @@
 import GrupoICTSLogo from '../assets/grupo_icts_logo.jpg';
+import ConecthusLogo from '../assets/conecthus_logo.png';
 import IFAMLogo from '../assets/ifam_logo.jpg';
 import FametroLogo from '../assets/soufametro_logo.jpg';
 
@@ -44,7 +45,7 @@ const experience = [
         company: 'Grupo ICTS',
         logo: GrupoICTSLogo,
         role: 'Desenvolvedor Full Stack Pleno',
-        time: 'Mar/2024 - Atual',
+        time: 'Mar/2024 - Nov/2024',
         activities: [
             "Responsável pelo desenvolvimento de aplicações back-end (REST API, RESTful API), utilizando Python, FastAPI, SQLAlchemy, C#, .NET e ASP.NET Core REST API.",
             "Responsável pelo desenvolvimento de aplicações front-end, utilizando React.js, Sass, Material UI e Recoil.",
@@ -56,6 +57,21 @@ const experience = [
             "Aplicação de design patterns para solução de problemas.",
             "Participação ativa em processos de revisão de código pelo GitLab e colaboração na definição de padrões de codificação.",
             "Colaboração com outros desenvolvedores e auxílio a desenvolvedores juniores, ajudando-os a crescer tecnicamente."
+        ],
+        type: 'WORK'
+    },
+    {
+        company: 'Instituto Conecthus',
+        logo: ConecthusLogo,
+        role: 'Desenvolvedor Full Stack Pleno',
+        time: 'Nov/2024 - Atual',
+        activities: [
+            "Responsável pelo desenvolvimento de aplicações back-end (REST API, RESTful API), utilizando Python, FastAPI, SQLAlchemy, C#, .NET e ASP.NET Core REST API.",
+            "Responsável pelo desenvolvimento de aplicações front-end, utilizando React.js, Sass, Material UI e Recoil.",
+            "Realização do deploy das aplicações em ambiente de homologação e produção utilizando Git e Docker.",
+            "Gerenciamento e modelagem de banco de dados utilizando MSSQL.",
+            "Resolução de problemas complexos e depuração de erros críticos.",
+            "Aplicação de design patterns para solução de problemas."
         ],
         type: 'WORK'
     }
